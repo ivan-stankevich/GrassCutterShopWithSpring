@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Serving Web Content</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header th:insert="blocks/header :: header"></header>
+        <a href="/main?lang=en_US" data-th-text="#{label.lang.en}"></a>
+        <a href="/main?lang=ru_RU" data-th-text="#{label.lang.ru}"></a>
+        <h2 data-th-text="#{label.post}"></h2>
+        <div class="container mt-5">
+            <h1 th:text="${title}"/>
+            <div th:each="el : ${posts}" class="alert alert-info mt-2">
+                <h3 th:text="${el.title}"/>
+                <p th:text="${el.anons}"/>
+                <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Details</a>
+            </div>
+        </div>
+
+        <div th:insert = "blocks/footer :: footer"></div>
+    </body>
+</html>

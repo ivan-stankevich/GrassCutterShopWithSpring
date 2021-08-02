@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container">
+    <h1 th:text="${title}"/>
+    <div >
+        <div>
+            <form th:action="'/grassCutters/add'" method="get">
+                <button type="submit" class="btn btn-warning">Add Grass Cutter</button>
+            </form>
+            <br>
+            <h4>Filter by brand</h4>
+            <form th:action="'/grassCutters/filterByBrand'" th:method="get">
+                <select name="brand">
+                    <option th:each="brands : ${brands}" th:text="${brands}"/>
+                </select>
+                <button type="submit" class="btn btn-warning">filter by brand</button>
+            </form>
+            <a th:href="'/grassCutters'" class="btn btn-warning">Reset</a>
+            <br>
+        </div>
+        <h4>Sort by price</h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <form th:action="'/grassCutters/sortByPrice'" th:method="get" >
+                    <button type="submit" class="btn btn-sm btn-outline-info">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+                        </svg></button>
+                </form>
+                <form th:action="'/grassCutters/sortByPriceDesc'" th:method="get" >
+                    <button type="submit" class="btn btn-sm btn-outline-info">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3.204 5L8 10.481 12.796 5H3.204zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                    </svg></button>
+                </form>
+            </div>
+        </div>
+        <a th:href="'/grassCutters'" class="btn btn-primary" role="button">Reset</a>
+    </div>
+
+        <div th:each="el : ${grassCutters}" class="alert alert-info mt-2" align="left">
+            <p><label for="name"> Name: <b><output th:text="${el.name}" id="name"/></b></label></p>
+            <p><label for="price"> Price: <output th:text="${el.price}" id="price"/></label></p>
+            <a th:href="'/grassCutters/' + ${el.id}" class="btn btn-primary">Details</a>
+        </div>
+
+</div>
+<div th:insert = "blocks/footer :: footer"></div>
+</body>
+</html>

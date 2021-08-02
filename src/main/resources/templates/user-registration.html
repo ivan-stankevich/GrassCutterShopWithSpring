@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>"Registration"</h1>
+    <form action="/user/registration" method="post">
+        <input type="text" name="email" placeholder="Input email" class="form-control"><br>
+        <input type="text" name="firstName" placeholder="Input firstName" class="form-control"><br>
+        <input type="text" name="lastName" placeholder="Input lastName" class="form-control"><br>
+        <input type="password" name="password" placeholder="Input password" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+</div>
+</div>
+<div th:insert = "blocks/footer :: footer"></div>
+</body>
+</html>

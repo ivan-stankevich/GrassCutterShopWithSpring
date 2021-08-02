@@ -1,0 +1,26 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Login</h2>
+        <p>
+            <label>User Name</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button><br>
+        <a href="/user/registration">Registration</a>
+    </form>
+</div>
+<div th:insert = "blocks/footer :: footer"></div>
+</body>
+</html>

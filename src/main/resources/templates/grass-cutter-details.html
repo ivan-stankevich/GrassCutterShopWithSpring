@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1 th:text="${title}"/>
+    <div th:each="el : ${grassCutter}" class="alert alert-info mt-2">
+        <h1 th:text="${el.name}"/>
+        <p th:text="${el.price}"/>
+        <p th:text="${el.type}"/>
+        <p th:text="${el.brand}"/>
+        <a th:href="'/grassCutters/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
+        <form th:action="'/order/add/' + ${el.id}" method="post">
+            <button type="submit" class="btn btn-warning">Buy</button>
+        </form><br>
+        <form th:action="'/grassCutters/' + ${el.id} + '/remove'" method="post">
+            <button type="submit" class="btn btn-warning">Delete</button>
+        </form>
+    </div>
+</div>
+
+<div th:insert = "blocks/footer :: footer"></div>
+</body>
+</html>

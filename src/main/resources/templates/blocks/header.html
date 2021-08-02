@@ -1,0 +1,17 @@
+<div th:fragment = "header">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <h5 class="my-0 md-mr-auto font-weight-normal">Grass Cutter Shop</h5>
+        <nav class="d-inline-flex mt-2 mt-md-2 ms-md-auto">
+            <a class="me-2 py-2 text-dark" href="/main">Main Page</a>
+            <a class="me-2 py-2 text-dark" href="/blog/add">Add Post</a>
+            <a class="me-2 py-2 text-dark" href="/grassCutters">Grass Cutters</a>
+            <a class="me-2 py-2 text-dark" href="/about">About</a>
+            <form action="/login" method="POST" class="me-2 py-2 text-dark">
+                <button type="submit">Login</button>
+            </form>
+            <form action="/logout" method="POST" class="me-2 py-2 text-dark">
+                <button type="submit">Logout</button>
+            </form>
+        </nav>
+    </div>
+</div>

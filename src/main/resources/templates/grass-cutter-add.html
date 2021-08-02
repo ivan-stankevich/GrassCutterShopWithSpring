@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Post</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>New Grass Cutter</h1>
+        <form method="post">
+            <input type="text" name="name" placeholder="Input name" class="form-control"><br>
+            <input type="number" name="price" placeholder="Input price" class="form-control"><br>
+            <select name="brand" class="custom-select">
+                <option th:each="brands : ${brands}" th:text="${brands}"/>
+            </select>
+            <br><br>
+            <select name="type">
+                <option th:each="types : ${types}" th:text="${types}"/>
+            </select>
+            <br><br>
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+</div>
+<div th:insert = "blocks/footer :: footer"></div>
+</body>
+</html>
